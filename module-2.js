@@ -181,45 +181,110 @@
 // Обріж новостворений масив без дублікатів (products3NoDubs) від першого до третього елемента
 // Створіть новий масив products4 = ["grapes", "pineapple", "cherry"] і зробіть його копію у змінну products4Copy
 // Чи рівні між собою products4 і products4Copy? Чому? Якщо додати новий елемент у products4 чи додасться він у products4Copy?
+
+/* const products1 = ["apple", "orange", "melon"];
+console.log(products1.push("pear"));
+console.log(products1);
+console.log(products1.length);
+console.log(products1[0]);
+console.log(products1[products1.length - 1]);
+console.log(products1.shift());
+console.log(products1);
+console.log(products1.pop());
+products1.unshift("cherry", "lemon");
+console.log(products1);
+const indexLemon = products1.indexOf("lemon");
+products1.splice(indexLemon, 1, "grapes");
+console.log(products1);
+const indexOrange = products1.indexOf("orange");
+products1.splice(indexOrange, 1);
+console.log(products1);
+const products2 = ["melon", "watermelon", "pineapple"];
+const products3 = products1.concat(products2);
+const products3NoDubs = Array.from(new Set(products3));
+console.log(products3NoDubs);
+console.log(products3NoDubs.splice(0, 3));
+console.log(products3NoDubs);
+const products4 = ["grapes", "pineapple", "cherry"];
+const products4Copy = products4.slice();
+console.log("products4:", products4, "products4Copy:", products4Copy);
+console.log(products4 === products4Copy); */
+
 // 2. Напиши функцію printContactsInfo(names, phones) яка виводить у консоль ім'я та телефонний номер користувача. У параметри names та phones будуть передані рядки імен та телефонних номерів, розділені комами. Порядковий номер імен та телефонів у рядках вказують на відповідність. Кількість імен та телефонів гарантовано однакова.
-// function printContactsInfo(names, phones) {
-//     ...
-// }
+/* function printContactsInfo(names, phones) {
+  const namesArr = names.split(",");
+  const phonesArr = phones.split(",");
 
-// console.log(printContactsInfo('Jacob,William,Solomon,Artemis', '89001234567,89001112233,890055566377,890055566300'))
+  for (let i = 0; i < namesArr.length; i += 1) {
+    console.log(`${namesArr[i]} - ${phonesArr[i]}`);
+  }
+}
+
+console.log(
+  printContactsInfo(
+    "Jacob,William,Solomon,Artemis",
+    "89001234567,89001112233,890055566377,890055566300"
+  )
+); */
 // 3. Напиши функцію findLongestWord(string), яка приймає параметром довільний рядок (в рядку будуть тільки слова і пробіли) і повертає найдовше слово в цьому рядку.
-// function findLongestWord (string) {
-//   ...
-// };
+/* function findLongestWord(string) {
+  const words = string.split(" ");
+  //  let longestWord = "";
+  let longestWord = words[0];
 
-// console.log(findLongestWord('The quick brown fox jumped over the lazy dog')); // 'jumped'
-// console.log(findLongestWord('Google do a roll')); // 'Google'
-// console.log(findLongestWord('May the force be with you')); // 'force'
+  for (const word of words) {
+    if (word.length > longestWord.length) {
+      longestWord = word;
+    }
+  }
+  return longestWord;
+}
+console.log(findLongestWord("The quick brown fox jumped over the lazy dog")); // 'jumped'
+console.log(findLongestWord("Google do a roll")); // 'Google'
+console.log(findLongestWord("May the force be with you")); // 'force' */
 
 // 5. Напиши скрипт, який виводить у консоль усі слова рядка крім першого і останнього. Результуючий рядок не повинен починатися або закінчуватися символ пробілу. Скрипт повинен працювати для будь-якого рядка.
-// function formatString(str){
-//     ...
-// }
-// console.log(formatString("   Welcome to the future   "))
-// console.log(formatString("Hello World"))
-// console.log(formatString("Knowlage is a power"))
+/* function formatString(str) {
+  const strArr = str.split(" ");
+  // const newStr = strArr.slice(1, strArr.length - 1);
+  const deleteFirst = strArr.splice(0, 1);
+  const deleteLast = strArr.splice(-1);
+
+  return strArr;
+}
+console.log(formatString("   Welcome to the future   "));
+console.log(formatString("Hello World"));
+console.log(formatString("Knowlage is a power")); */
+
 // 6. Напишіть код, який очищає масив від небажаних значень, таких як false undefined, пусті рядки, нуль, null.
-// function filterArray(arr){
-//     ...
-// }
-// console.log(filterArray([0, 1, false, 2, undefined, '', 3, null])) // [1, 2, 3]
-// console.log(filterArray([NaN, 0, 15, false, -22, '',undefined, 47, null])) // [15, -22, 47]
+
+/* function filterArray(arr) {
+  const newArr = arr.filter(Boolean);
+  return newArr;
+}
+console.log(filterArray([0, 1, false, 2, undefined, "", 3, null])); // [1, 2, 3]
+console.log(filterArray([NaN, 0, 15, false, -22, "", undefined, 47, null])); // [15, -22, 47] */
+
 // 7. Напишіть код, який повертає новий масив без наданих значень.
 // Очікуваний результат: [1, 2, 3, 1, 2] без 1 => [2, 3, 2]
-// function deleteSpecificCharacter(arr, charToDelete){
-//     ...
-// }
-// console.log(deleteSpecificCharacter([1, 2, 3, 1, 2], 1)) // [2, 3, 2]
-// console.log(deleteSpecificCharacter([5, 6, 2, 9, 2])) // [5, 6, 2, 9, 2]
-// console.log(deleteSpecificCharacter([4, 3, 2, 1, 0], 9)) // [4, 3, 2, 1, 0]
+/* function deleteSpecificCharacter(arr, charToDelete) {
+  const newArr = arr.filter((number) => number !== charToDelete);
+  return newArr;
+}
+console.log(deleteSpecificCharacter([1, 2, 3, 1, 2], 1)); // [2, 3, 2]
+console.log(deleteSpecificCharacter([5, 6, 2, 9, 2])); // [5, 6, 2, 9, 2]
+console.log(deleteSpecificCharacter([4, 3, 2, 1, 0], 9)); // [4, 3, 2, 1, 0] */
+
 // 8. Напишіть код, який поверне суму рядка
-// function digitSum(data){
-//     ...
-// }
-// console.log(digitSum(4367)) // 20
-// console.log(digitSum(56349)) // 27
+/* function digitSum(data) {
+  let array = ("" + data).split("");
+  let total = 0;
+  for (let i = 0; i < array.length; i++) {
+    const number = +array[i];
+    total += number;
+  }
+
+  return total;
+}
+console.log(digitSum(4367)); // 20
+console.log(digitSum(56349)); // 27 */
