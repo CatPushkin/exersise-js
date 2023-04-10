@@ -143,6 +143,27 @@
 //   // Change code above this line
 // }
 
+/* function includes(array, value) {
+  // Change code below this line
+
+  for (let i = 0; i < array.length; i++) {
+    if (array[i] === value) {
+      return true;
+    }
+  }
+  return false;
+
+  // Change code above this line
+}
+
+console.log(includes([1, 2, 3, 4, 5], 3));
+console.log(
+  includes(["Earth", "Mars", "Venus", "Jupiter", "Saturn"], "Uranus")
+);
+console.log(
+  includes(["Earth", "Mars", "Venus", "Jupiter", "Saturn"], "Jupiter")
+);
+console.log(includes(["apple", "plum", "pear", "orange"], "plum")); */
 /* -----------------------lesson-1---------------------------- */
 
 // 4. Напишіть функцію, яка перевіряє екзамен у студентів. Перший вхідний масив містить правильні відповіді на іспиті, наприклад, ["a", "a", "b", "d"]. Другий масив називається "answers" і містить відповіді студента. Обидва масиви не порожні і мають однакову довжину. Поверніть оцінку для цього масиву відповідей, виводячи +4 за кожну правильну відповідь, -1 за кожну неправильну відповідь і +0 за кожну пропущену відповідь (порожній рядок). Якщо оцінка < 0, виведіть 0.
@@ -263,18 +284,24 @@ console.log(formatString("Knowlage is a power")); */
   return newArr;
 }
 console.log(filterArray([0, 1, false, 2, undefined, "", 3, null])); // [1, 2, 3]
-console.log(filterArray([NaN, 0, 15, false, -22, "", undefined, 47, null])); // [15, -22, 47] */
-
+console.log(filterArray([NaN, 0, 15, false, -22, "", undefined, 47, null])); // [15, -22, 47]
+ */
 // 7. Напишіть код, який повертає новий масив без наданих значень.
 // Очікуваний результат: [1, 2, 3, 1, 2] без 1 => [2, 3, 2]
 /* function deleteSpecificCharacter(arr, charToDelete) {
-  const newArr = arr.filter((number) => number !== charToDelete);
-  return newArr;
+  // const newArr = arr.filter((number) => number !== charToDelete);
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] === charToDelete) {
+      let indexFind = arr.indexOf(arr[i]);
+      arr.splice(indexFind, 1);
+    }
+  }
+  return arr;
 }
 console.log(deleteSpecificCharacter([1, 2, 3, 1, 2], 1)); // [2, 3, 2]
 console.log(deleteSpecificCharacter([5, 6, 2, 9, 2])); // [5, 6, 2, 9, 2]
-console.log(deleteSpecificCharacter([4, 3, 2, 1, 0], 9)); // [4, 3, 2, 1, 0] */
-
+console.log(deleteSpecificCharacter([4, 3, 2, 1, 0], 9)); // [4, 3, 2, 1, 0]
+ */
 // 8. Напишіть код, який поверне суму рядка
 /* function digitSum(data) {
   let array = ("" + data).split("");
