@@ -442,3 +442,105 @@ function umUpTheInstances(products) {
 }
 
 console.log(umUpTheInstances(products)); */
+
+/* --------------- АВТОПЕРЕВІРКА---------------- */
+
+// function countProps(object) {
+//   // Change code below this line
+//   let propCount = 0;
+
+//   // for (const key in object) {
+//   //   if (object.hasOwnProperty(key)) {
+//   //     propCount += 1;
+//   //   }
+//   // }
+
+//   // const keys = Object.keys(object);
+//   // for (const key of keys) {
+//   //   if (object.hasOwnProperty(key)) {
+//   //     propCount += 1;
+//   //   }
+//   // }
+
+//   let key = Object.keys(object).length;
+//   propCount += key;
+//   return propCount;
+//   // Change code above this line
+// }
+
+// console.log(countProps({ name: "Mango", age: 2 }));
+// console.log(countProps({ mail: "poly@mail.com", isOnline: true, score: 500 }));
+
+// Напиши функцію countTotalSalary(salaries), яка приймає об'єкт зарплат, де ім'я властивості - це ім'я співробітника, а значення властивості - це зарплата. Функція повинна розрахувати загальну суму зарплат співробітників і повернути її. Використовуй змінну totalSalary для зберігання загальної суми зарплати.
+/* function countTotalSalary(salaries) {
+  let totalSalary = 0;
+  // Change code below this line
+  const arrSalary = Object.values(salaries);
+  for (const salary of arrSalary) {
+    totalSalary += salary;
+  }
+  // Change code above this line
+  return totalSalary;
+}
+console.log(countTotalSalary({}));
+console.log(countTotalSalary({ mango: 100, poly: 150, alfred: 80 }));
+console.log(countTotalSalary({ kiwi: 200, poly: 50, ajax: 150 })); */
+
+// Перебери масив об'єктів colors, використовуючи цикл for...of. Додай у масив hexColors значення властивостей hex, а в масив rgbColors - значення властивостей rgb з усіх об'єктів масиву colors.
+
+/* const colors = [
+  { hex: "#f44336", rgb: "244,67,54" },
+  { hex: "#2196f3", rgb: "33,150,243" },
+  { hex: "#4caf50", rgb: "76,175,80" },
+  { hex: "#ffeb3b", rgb: "255,235,59" },
+];
+
+const hexColors = [];
+const rgbColors = [];
+// Change code below this line
+for (const color of colors) {
+  // console.log(color.hex);
+  hexColors.push(color.hex);
+  rgbColors.push(color.rgb);
+}
+console.log(hexColors);
+console.log(rgbColors);
+ */
+
+// Напиши функцію getProductPrice(productName), яка приймає один параметр productName - назва продукту. Функція шукає об'єкт продукту з таким ім'ям (властивість name) в масиві products і повертає його ціну (властивість price). Якщо продукт з такою назвою не знайдений, функція повинна повертати null.
+
+// const products = [
+//   { name: "Radar", price: 1300, quantity: 4 },
+//   { name: "Scanner", price: 2700, quantity: 3 },
+//   { name: "Droid", price: 400, quantity: 7 },
+//   { name: "Grip", price: 1200, quantity: 9 },
+// ];
+/* 
+function getProductPrice(productName) {
+  // Change code below this line
+  for (const product of products) {
+    console.log(product);
+    if (productName === product.name) {
+      return product.price;
+    }
+  }
+  return null;
+  // Change code above this line
+} */
+
+/* function calculateTotalPrice(productName) {
+  // Change code below this line
+  for (const product of products) {
+    if (productName === product.name) {
+      // console.log(product.name);
+      return product.price * product.quantity;
+    }
+  }
+  return 0;
+  // Change code above this line
+} */
+
+// console.log(calculateTotalPrice("Radar"));
+// console.log(calculateTotalPrice("Grip"));
+// console.log(calculateTotalPrice("Scanner"));
+// console.log(calculateTotalPrice("Engine"));
