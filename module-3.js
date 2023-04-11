@@ -296,3 +296,149 @@ for (const potion of potions) {
   // Change code above this line
 };
  */
+/* ----------------LESSON-1------------------ */
+
+/* 2. Практика базових дій над об'єктом
+Створи 2 окремі змінні firstName і lastName і задопомогою promt попроси користувача ввести дані.
+Зміни значення властивості firstName на якесь інше
+Створи об'єкт user і занеси в нього дані які ти отримав у користувача, після цієї дії в об'єкті user має бути 2 властивості.
+Виедети значення властивості lastName у консоль 2 способами.
+Створи змінну const login = test@gmail.com
+Створи змінну const password = test123
+Створи властивість auth, її значенням має бути об'єкт з 2 властивостями login i password. Скоритайся короткими властивостями
+Виедети значення властивості auth у консоль.
+Створи у об'єкті user 2 методи: showUser() - який виводить у консоль поточний об'єкт showFullName()- який виводить у консоль повне ім'я користувача */
+/* const firstName = prompt("Input your name");
+const lastName = prompt("Input your surname");
+const user = {
+  firstName,
+  lastName,
+  showUser() {
+    console.log(this);
+    console.log(user);
+  },
+  showFullName() {
+    console.log(`${this.firstName} ${this.lastName}`);
+  },
+};
+user.firstName = "Liubov";
+// user["firstName"] = "Liubov";
+
+const login = "test@gmail.com";
+const password = "test123";
+user.auth = {
+  login,
+  password,
+};
+// console.log(user);
+// console.log(user.auth);
+user.showUser();
+user.showFullName(); */
+
+// Напишіть функцію isBookAlreadyRead для відображення статусу читання (тобто відображення назви книги, імені автора та статусу читання) наступних книг.Наприклад "Already read " + "book" by author або "You still need to read " + "book" by author
+// const library = [
+//   {
+//     title: "Bill Gates",
+//     author: "The Road Ahead",
+//     readingStatus: true,
+//   },
+//   {
+//     title: "Steve Jobs",
+//     author: "Walter Isaacson",
+//     readingStatus: true,
+//   },
+//   {
+//     title: "Mockingjay: The Final Book of The Hunger Games",
+//     author: "Suzanne Collins",
+//     readingStatus: false,
+//   },
+// ];
+
+// function isBookAlreadyRead(books) {
+//   for (const book of books) {
+//     /* if (book.readingStatus) {
+//       console.log(`Already read ${book.title}  by author ${book.author}`);
+//       continue;
+//     }
+//     console.log(
+//       `You still need to read ${book.title}  by author ${book.author}`
+//     ); */
+
+//     return book.readingStatus
+//       ? console.log(`Already read ${book.title}  by author ${book.author}`)
+//       : console.log(
+//           `You still need to read ${book.title}  by author ${book.author}`
+//         );
+//   }
+// }
+// isBookAlreadyRead(library);
+
+// 4. Обнови значення кожної властивості так, що перед сумою стояв знак долара.
+// Виводь результат у форматі name: $salary
+
+// const salaries = {
+//   Jack: 24000,
+//   Paul: 34000,
+//   Monica: 55000,
+// };
+
+// 6. Напиши функцію getAllPropValues(arr, prop), яка отримує масив об'єктів та ім'я ключа. Повертає масив значень певного поля prop кожного об'єкта в масиві.
+/* const users = [
+  {
+    firstName: "Mark",
+    lastName: "G.",
+    country: "Scotland",
+    age: 22,
+    language: "JavaScript",
+  },
+  {
+    firstName: "Victoria",
+    lastName: "T.",
+    country: "Puerto Rico",
+    continent: "Americas",
+    age: 30,
+    language: "Python",
+  },
+  {
+    firstName: "Emma",
+    lastName: "B.",
+    country: "Norway",
+    age: 19,
+    language: "Java",
+  },
+];
+
+function getAllPropValues(arr, prop) {
+  const result = [];
+  for (const item of arr) {
+    if (item[prop]) {
+      result.push(item[prop]);
+    }
+  }
+  return result;
+}
+
+console.log(getAllPropValues(users, "firstName")); // ["Mark", "Victoria", "Emma"]
+console.log(getAllPropValues(users, "language")); // ["JavaScript", "Python", "Java"]
+console.log(getAllPropValues(users, "hobby")); // [] */
+
+// 7. Є масив data і в ньому дублюються елементи. Створи функцію sumUpTheInstances, яка буде повертати об'єкт, який буде місти властивість, де ключем буде унікальне значення, а значенням буде число, скільки раз воно повторювалось у масиві.
+// Очікуваний результат: const obj = { apple: 2, banana: 2, avocado: 1, cherry:1 }
+
+/* const products = ["apple", "apple", "banana", "banana", "avocado", "cherry"];
+
+function umUpTheInstances(products) {
+  // const obj = Object.create({});
+  const result = {};
+  for (const product of products) {
+    // if (result[product]) {
+    //   result[product] += 1;
+    // } else {
+    //   result[product] = 1;
+    // }
+    result[product] ? (result[product] += 1) : (result[product] = 1);
+  }
+  return result;
+}
+
+console.log(umUpTheInstances(products)); */

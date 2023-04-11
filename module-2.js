@@ -377,24 +377,25 @@ logins. Логін, який додається повинен:
 isLoginUnique тільки перевіряє чи є такий логін в масиві і повертає true або false.
 isLoginValid тільки перевіряє чи валідний логін і повертає true або false.
 addLogin додають чи не додають логін в масив. При цьому для перевірок умови додавання використовує результати викликів інших функцій - isLoginUnique і isLoginValid. */
-// const logins = ["Mango", "robotGoogles", "Poly", "Aj4x1sBozz", "qwerty123"];
-// const addLogin = function (logins, newLogin) {
-//   const array = [...logins];
-//   const isUnique = array.includes(newLogin);
-//   console.log(array);
-//   for (let i = 0; i < array.length; i++) {
-//     if (array[i] !== newLogin) {
-//       array.push(array[i]);
-//       return;
-//     }
-//   }
-//   console.log(array);
-// };
-// // Виклич функції для перевірки працездатності твоєї реалізації.
-// console.log(addLogin(logins, "Ajax")); // 'Логін успішно доданий!'
-// console.log(addLogin(logins, "robotGoogles")); // 'Такий логін вже використовується!'
-// console.log(addLogin(logins, "Zod")); // 'Помилка! Логін повинен бути від 4 до 16 символів'
-// console.log(addLogin(logins, "jqueryisextremelyfast")); // 'Помилка! Логін повинен бути в
+/* const logins = ["Mango", "robotGoogles", "Poly", "Aj4x1sBozz", "qwerty123"];
+const addLogin = function (logins, newLogin) {
+  const array = [...logins];
+  const isUnique = array.includes(newLogin);
+
+  if (!isUnique) {
+    if (newLogin.length >= 4 && newLogin.length <= 16) {
+      array.push(newLogin);
+      return "Логін успішно доданий!";
+    }
+    return "Помилка! Логін повинен бути від 4 до 16 символів";
+  }
+  return "Такий логін вже використовується!";
+};
+// Виклич функції для перевірки працездатності твоєї реалізації.
+console.log(addLogin(logins, "Ajax")); // 'Логін успішно доданий!'
+console.log(addLogin(logins, "robotGoogles")); // 'Такий логін вже використовується!'
+console.log(addLogin(logins, "Zod")); // 'Помилка! Логін повинен бути від 4 до 16 символів'
+console.log(addLogin(logins, "jqueryisextremelyfast")); // 'Помилка! Логін повинен бути в */
 
 // 5. Напишіть функції для роботи з колекцією todos(завдання/плани):
 // showTodos() - повертає всю колекцію
