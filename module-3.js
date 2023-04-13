@@ -747,3 +747,84 @@ console.log(atTheOldToad.updatePotionName("Dragon breath", "Polymorth"));
 console.log(
   atTheOldToad.updatePotionName("Stone skin", "Invulnerability potion")
 ); */
+
+/* ---------lesson 4-------------- */
+
+//  Напиши декілька функцій:
+// Отримати список моделей задопомогою функції getModels:
+// Замінити назву моделі задопомогою функції changeModel
+// Отримати загальну ціну всіх машин за допомогою функції getTotalPrice
+/* const vehicles = [
+  { make: "Honda", model: "CR-V", type: "suv", price: 24045 },
+  { make: "Honda", model: "Accord", type: "sedan", price: 22455 },
+  { make: "Mazda", model: "Mazda 6", type: "sedan", price: 24195 },
+  { make: "Mazda", model: "CX-9", type: "suv", price: 31520 },
+  { make: "Toyota", model: "4Runner", type: "suv", price: 34210 },
+  { make: "Toyota", model: "Sequoia", type: "suv", price: 45560 },
+  { make: "Toyota", model: "Tacoma", type: "truck", price: 24320 },
+  { make: "Ford", model: "F-150", type: "truck", price: 27110 },
+  { make: "Ford", model: "Fusion", type: "sedan", price: 22120 },
+  { make: "Ford", model: "Explorer", type: "suv", price: 31660 },
+];
+function getModels(vehicles) {
+  const models = [];
+  for (let { model } of vehicles) {
+    models.push(model);
+  }
+  return models;
+}
+function changeModel(vehicles, oldName, newName) {
+  for (const vehicle of vehicles) {
+    if (vehicle.model === oldName) {
+      vehicle.model = newName;
+    }
+  }
+  // console.log(getModels(vehicles));
+}
+function getTotalPrice(vehicles) {
+  let total = 0;
+  for (const vehicle of vehicles) {
+    total += vehicle.price;
+  }
+  return total;
+}
+
+console.log(getModels(vehicles));
+
+console.log(changeModel(vehicles, "Mazda 6", "Hello world"));
+console.log(changeModel(vehicles, "Fusion", "AAAAAA"));
+console.log(changeModel(vehicles, "F-150", "BBBBBB"));
+
+console.log(getTotalPrice(vehicles)); */
+
+// Напишіть функцію checkLineForContentOfTwoIdenticalChars, яка прийматиму набір рядків і повертатиме масив лише з тими рядками, в яких будь-яка буква повторювалась лише 2 рази.
+// Input: "asdf", "fdas", "asds", "d fm", "dfaa", "aaaa", "aabb", "aaabb" Output: 'asds', 'dfaa', 'aabb', 'aaabb'
+
+/* function checkLineForContentOfTwoIdenticalChars(...inputStrings) {
+  const result = [];
+  for (const inputString of inputStrings) {
+    const letterCount = {};
+    for (const letter of inputString) {
+      letterCount[letter]
+        ? (letterCount[letter] += 1)
+        : (letterCount[letter] = 1);
+    }
+    if (Object.values(letterCount).includes(2)) {
+      result.push(inputString);
+    }
+  }
+  return result;
+}
+
+console.log(
+  checkLineForContentOfTwoIdenticalChars(
+    "asdf",
+    "fdas",
+    "asds",
+    "d fm",
+    "dfaa",
+    "aaaa",
+    "aabb",
+    "aaabb"
+  )
+); */
