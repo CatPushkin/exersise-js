@@ -436,6 +436,7 @@ function umUpTheInstances(products) {
     // } else {
     //   result[product] = 1;
     // }
+
     result[product] ? (result[product] += 1) : (result[product] = 1);
   }
   return result;
@@ -544,3 +545,205 @@ function getProductPrice(productName) {
 // console.log(calculateTotalPrice("Grip"));
 // console.log(calculateTotalPrice("Scanner"));
 // console.log(calculateTotalPrice("Engine"));
+
+/* -----------PRACTICE----------------- */
+
+// 1. Напишіть функцію під назвою displayName(), яка приймає об’єкт як аргумент і виводить ім’я та прізвище людини. Використовуйте деструктуризацію об’єкта в аргументі функції. А також використовуйте шаблонні рядки при друку імені та прізвища.
+/* function displayName({ first, last }) {
+  return `${first} ${last}`;
+}
+
+console.log(
+  displayName({
+    first: "Elon",
+    last: "Musk",
+    twitter: "@elonmusk",
+    company: "Space X",
+  })
+); */
+
+// 2. Напиши функцію transformUsername(user) так, щоб вона повертала новий об'єкт із властивістю fullName, замість firstName та lastName. Викоритовуй rest оператор.
+/* function transformUsername({ id, email, ...arg }) {
+  const { firstName, lastName } = arg;
+  return { id, email, fullName: firstName + " " + lastName };
+}
+
+console.log(
+  transformUsername({
+    id: 1,
+    firstName: "Jacob",
+    lastName: "Mercer",
+    email: "j.mercer@mail.com",
+  })
+); // { id: 1, fullname: 'Jacob Mercer', email: 'j.mercer@mail.com'}
+ */
+
+// 3. У нас є об'єкт salaries із зарплатами. Створіть функцію topSalary (salaries), яка повертає ім'я найвищого працівника. Якщо об'єкт salaries порожній, потрібно повернути null. Якщо кілька високооплачуваних співробітників можна повернути будь-якого з них. Використовуйте Object.entries та деструктурування, щоб перебрати пари ключ/значення.
+/* let salaries = {
+  John: 100,
+  Pete: 300,
+  Mary: 250,
+};
+function topSalary(salaries = {}) {
+  const arr = Object.entries(salaries);
+  let biggestSalary = 0;
+  let topEmployee = " ";
+
+  for (const [key, value] of arr) {
+    if (value > biggestSalary) {
+      biggestSalary = value;
+      topEmployee = key;
+    }
+  }
+  return topEmployee;
+}
+console.log(topSalary(salaries)); */
+
+// 4. Напишіть функцію, яка називається calculateSalesTotals(), яка повертає масив із двома новими ключами (sale і total). Ключ «sale» дорівнює розрахованій ціні продажу на основі початкової ціни та знижки. Ключ «total» дорівнює обчисленій сумі на основі запасів(stock), початкової ціни та знижки. Ви повинні використовувати деструктуризацію об’єктів для об’єктів у масиві продажів і значення за замовчуванням об’єктів для ключа знижки. Стандартним значенням буде 0.0.
+// EXPECTED OUTPUT: const updatedProducts = [ { item: "PS4 Pro", original: 399.99, sale: 399.99, 🆕 stock: 3, total: 1199.97 🆕 }, { discount: 0.1, item: "Xbox One X", original: 499.99, sale: 449.99, 🆕 stock: 1, total: 449.99 🆕 }, { item: "Nintendo Switch", original: 299.99, sale: 299.99, 🆕 stock: 4, total: 1199.96 🆕 }, { discount: 0.8, item: "PS2 Console", original: 299.99, sale: 59.99, 🆕 stock: 1, total: 59.99 🆕 }, { discount: 0.65, item: "Nintendo 64", original: 199.99, sale: 69.99, 🆕 stock: 2, total: 139.99 🆕 } ]
+
+/* const products = [
+  { item: "PS4 Pro", stock: 3, original: 399.99 },
+  { item: "Xbox One X", stock: 1, original: 499.99, discount: 0.1 },
+  { item: "Nintendo Switch", stock: 4, original: 299.99 },
+  { item: "PS2 Console", stock: 1, original: 299.99, discount: 0.8 },
+  { item: "Nintendo 64", stock: 2, original: 199.99, discount: 0.65 },
+];
+function calculateSalesTotals(products) {
+  const productsCopy = structuredClone(products);
+  for (const product of productsCopy) {
+    const { original, discount = 0, stock } = product;
+    product.sale = (original * discount).toFixed(2);
+    product.total = (original * stock - product.sale * stock).toFixed(2);
+  }
+  return productsCopy;
+}
+
+console.log(calculateSalesTotals(products)); */
+
+// 5. Напишіть функцію without(), яка повертає новий об'єкт без зазначених значень.
+// Очікуваний результат: ({ a: 1, b: 2 }, 'b') => { a: 1 } Очікуваний результат: ({ a: 1, b: 2, с: 3, d: 4 }, 'c, b') => { a: 1, d: 4 }
+
+/* function without(obj, ...props) {
+  const objCopy = { ...obj };
+  for (const prop of props) {
+    delete objCopy[prop];
+  }
+  return objCopy;
+}
+console.log(without({ a: 1, b: 2 }, "b"));
+console.log(without({ a: 1, b: 2, c: 3, d: 4 }, "c", "b")); */
+
+/* -----------HOMEWORK---------------- */
+
+/* function makeTask(data) {
+  const completed = false;
+  const category = "General";
+  const priority = "Normal";
+  // Change code below this
+  // const newData = { ...{ completed, category, priority } };
+  // console.log(newData);
+  return { ...{ completed, category, priority }, ...data };
+  // Change code above this line
+}
+
+console.log(makeTask({}));
+console.log(
+  makeTask({
+    category: "Homemade",
+    priority: "Low",
+    text: "Take out the trash",
+  })
+);
+console.log(makeTask({ category: "Finance", text: "Take interest" }));
+console.log(makeTask({ priority: "Low", text: "Choose shampoo" })); */
+
+// Використовуючи операцію rest, доповни код функції add() таким чином, щоб вона приймала будь-яку кількість аргументів, рахувала і повертала їх суму.
+/* function add(...args) {
+  let total = 0;
+  for (const arg of args) {
+    total += arg;
+  }
+  return total;
+  // Change code above this line
+}
+console.log(add(15, 27));
+console.log(add(12, 4, 11, 48));
+console.log(add(32, 6, 13, 19, 8)); */
+
+// Функція findMatches() приймає довільну кількість аргументів. Першим аргументом завжди буде масив чисел, а решта аргументів будуть просто числами.
+
+// Доповни код функції таким чином, щоб вона повертала новий масив matches, в якому будуть тільки ті аргументи, починаючи з другого, які є в масиві першого аргументу.
+
+// Наприклад, findMatches([1, 2, 3, 4, 5], 1, 8, 2, 7) повинна повернути масив [1, 2], тому що тільки вони є в масиві першого аргументу.
+/* function findMatches(arr, ...args) {
+  const matches = []; // Don't change this line
+
+  for (const arg of args) {
+    if (arr.includes(arg)) {
+      matches.push(arg);
+    }
+  }
+
+  // Change code above this line
+  return matches;
+}
+console.log(findMatches([1, 2, 3, 4, 5], 1, 8, 2, 7));
+console.log(findMatches([4, 89, 17, 36, 2], 8, 17, 89, 27, 2));
+console.log(findMatches([63, 11, 8, 29], 4, 7, 16)); */
+
+/* const atTheOldToad = {
+  potions: [
+    { name: "Speed potion", price: 460 },
+    { name: "Dragon breath", price: 780 },
+    { name: "Stone skin", price: 520 },
+  ],
+  // Change code below this line
+  getPotions() {
+    return this.potions;
+  },
+  addPotion(newPotion) {
+    for (const { name } of this.potions) {
+      if (newPotion.name === name) {
+        return `Error! Potion ${newPotion.name} is already in your inventory!`;
+      }
+    }
+    this.potions.push(newPotion);
+  },
+  removePotion(potionName) {
+    // for (let i = 0; i < this.potions.length; i++) {
+    //   const { name } = this.potions[i];
+    //   if (name === potionName) {
+    //     this.potions.splice(i, 1);
+    //   }
+    // }
+    for (let potion of this.potions) {
+      if (potion.name === potionName) {
+        const index = this.potions.indexOf(potion);
+        this.potions.splice(index, 1);
+      }
+    }
+  },
+  updatePotionName(oldName, newName) {
+    for (const potion of this.potions) {
+      console.log(potion);
+      if (oldName === potion.name) {
+        potion.name = newName;
+      }
+    }
+  },
+};
+
+console.log(atTheOldToad.getPotions());
+console.log(atTheOldToad.addPotion({ name: "Invisibility", price: 620 }));
+console.log(atTheOldToad.addPotion({ name: "Power potion", price: 270 }));
+console.log(atTheOldToad.addPotion({ name: "Dragon breath", price: 700 }));
+console.log(atTheOldToad.addPotion({ name: "Stone skin", price: 240 }));
+console.log(atTheOldToad.addPotion({ name: "Dragon breath", price: 700 }));
+console.log(atTheOldToad.addPotion({ name: "Stone skin", price: 240 }));
+console.log(atTheOldToad.removePotion("Dragon breath"));
+console.log(atTheOldToad.removePotion("Speed potion"));
+console.log(atTheOldToad.updatePotionName("Dragon breath", "Polymorth"));
+console.log(
+  atTheOldToad.updatePotionName("Stone skin", "Invulnerability potion")
+); */
