@@ -300,3 +300,229 @@ const names = books
   .map((book) => book.author)
   .sort((a, b) => a.localeCompare(b));
 console.log(names); */
+
+/* ------------PRACTICE---------------- */
+
+// Напишіть наступні функції:
+// createProduct(obj, callback) - приймає об'єкт товару без id, а також коллбек. Функція створює об'єкт товару, додаючи йому унікальний ідентифікатор у властивість id та викликає коллбек передаючи йому створений об'єкт.
+// logProduct(product) - колббек приймаючий об'єкт продукту і логуючий його в консоль
+// logTotalPrice(product) - колббек, що приймає об'єкт продукту і логіює загальну вартість товару в консоль
+/* function createProduct(obj, callback) {
+  let id = new Date();
+  const newObj = { ...obj, id };
+  callback(newObj);
+}
+
+function logProduct(obj) {
+  console.log(obj);
+}
+
+function logTotalPrice({ price, quantity }) {
+  console.log(price * quantity);
+}
+
+createProduct({ name: "🍎", price: 30, quantity: 3 }, logProduct);
+createProduct({ name: "🍋", price: 20, quantity: 5 }, logTotalPrice); */
+
+// 2. В об'єкта account є методи withdraw(amount, onSuccess, onError) та deposit(amount, onSuccess, onError), де перший параметр це сума операції, а другий та третій - коллбеки.
+// Метод withdraw викликає onError якщо amount більше TRANSACTION_LIMIT або this.balance, і onSuccess в іншому випадку.
+// Метод deposit викликає onError якщо amount більше TRANSACTION_LIMIT або менше або дорівнює нулю, і onSuccess в іншому випадку.
+/* const TRANSACTION_LIMIT = 1000;
+
+const account = {
+  username: "Jacob",
+  balance: 1000,
+  withdraw(amount, onSuccess, onError) {
+    if (amount > TRANSACTION_LIMIT || amount > this.balance) {
+      onError("Недодастньо коштів для транзакції");
+    } else {
+      this.balance -= amount;
+      onSuccess("Успіх");
+    }
+  },
+  deposit(amount, onSuccess, onError) {
+    if (amount > TRANSACTION_LIMIT || amount <= 0) {
+      onError("Перевищений ліміт");
+    } else {
+      this.balance += amount;
+      onSuccess("Успіх");
+    }
+  },
+};
+
+function handleSuccess(message) {
+  console.log(message);
+}
+function handleError(message) {
+  console.log(message);
+}
+
+account.withdraw(2000, handleSuccess, handleError);
+account.withdraw(600, handleSuccess, handleError);
+account.withdraw(300, handleSuccess, handleError);
+account.deposit(1700, handleSuccess, handleError);
+account.deposit(0, handleSuccess, handleError);
+account.deposit(-600, handleSuccess, handleError);
+account.deposit(600, handleSuccess, handleError); */
+
+// 3. Створи стрілочну функцію logItems(), яка виводитьв консоль елементи масива, зроби перебір за допомогою методу forEach().
+/* const logItems = (arr) =>
+  arr.forEach((element, index) => {
+    console.log(`${index + 1}.${element}`);
+  });
+logItems(["Mango", "Poly", "Ajax"]);
+logItems(["🍎", "🍇", "🍑", "🍌", "🍋"]); */
+
+/* const calculateSum = (numbers) => {
+  let total = 0;
+  numbers.forEach((number) => (total += number));
+  return total;
+};
+
+console.log(calculateSum([123, 357, 845, 12])); */
+
+// 4. Напишіть функцію each(array, callback), яка першим параметром очікує масив, а другим - функцію, яка застосовується до кожного елемента масиву. Функція each повинна повернути новий масив, елементами якого будуть результати виклику коллбека. Використай forEach() для перебору масива
+/* function each(array, callback) {
+  const result = [];
+  array.forEach((element) => result.push(callback(element)));
+  return result;
+}
+
+console.log(
+  each([64, 49, 36, 25, 16], function (value) {
+    return value * 2;
+  })
+);
+console.log(
+  each([64, 49, 36, 25, 16], function (value) {
+    return value - 10;
+  })
+);
+console.log(
+  each([64, 49, 36, 25, 16], function (value) {
+    return Math.sqrt(value);
+  })
+);
+console.log(
+  each([1.5, 2.1, 16.4, 9.7, 11.3], function (value) {
+    return Math.ceil(value);
+  })
+);
+console.log(
+  each([1.5, 2.1, 16.4, 9.7, 11.3], function (value) {
+    return Math.floor(value);
+  })
+);
+ */
+
+// 5. Напишіть функцію groupBy(), яка групує елементи з масиву за значенням, що повертається зворотним викликом, коли елемент із масиву передається як аргумент.
+/* const users = [
+  {
+    name: "John",
+    yearOfBirth: 1988,
+    placeOfBirth: "New York",
+  },
+  {
+    name: "Nancy",
+    yearOfBirth: 1963,
+    placeOfBirth: "New York",
+  },
+  {
+    name: "John",
+    yearOfBirth: 1980,
+    placeOfBirth: "Toronto",
+  },
+];
+
+function groupBy(users, callback) {
+  const resultObj = {};
+  for (const user of users) {
+    const prop = callback(user);
+    if (!resultObj[prop]) {
+      resultObj[prop] = [user];
+    } else {
+      resultObj[prop].push(user);
+    }
+  }
+  return resultObj;
+}
+
+console.log(groupBy(users, (objectEl) => objectEl.placeOfBirth)); */
+//Очікуваний резульат:
+// {
+//   ❗️New York: [
+//     {
+//       name: 'John',
+//       yearOfBirth: 1988,
+//       placeOfBirth: 'New York',
+//     },
+//     {
+//       name: 'Nancy',
+//       yearOfBirth: 1963,
+//       placeOfBirth: 'New York',
+//     }
+//   ],
+//   ❗️Toronto: [
+//     {
+//       name: 'John',
+//       yearOfBirth: 1980,
+//       placeOfBirth: 'Toronto',
+//     }
+//   ]
+// }
+
+/*
+Write a function called onlyEvenValues which accepts an array and returns a new array with only the even values in the array passed to the function
+
+Examples:
+    onlyEvenValues([1,2,3]) // [2]
+    onlyEvenValues([5,1,2,3,10]) // [2,10]
+
+*/
+
+/* function onlyEvenValues() {
+  const result = [];
+  array.forEach((element) => {
+    if (element % 2 === 0) {
+      result.push(element);
+    }
+  });
+  return result;
+}
+
+onlyEvenValues([1, 2, 3]); */
+
+/* const onlyEvenValues = (array) => {
+  const result = [];
+  array.forEach((element) => (element % 2 === 0 ? result.push(element) : null));
+  return result;
+};
+console.log(onlyEvenValues([1, 2, 3]));
+console.log(onlyEvenValues([5, 1, 2, 3, 10])); */
+
+/*
+Write a function called addKeyAndValue which accepts an array of objects, a key, and a value and returns the array passed to the function with the new key and value added for each object 
+
+Examples:
+    addKeyAndValue([{name: 'Elie'}, {name: 'Tim'}, {name: 'Matt'}, {name: 'Colt'}], 'title', 'instructor') 
+    
+    // [{name: 'Elie', title:'instructor'}, {name: 'Tim', title:'instructor'}, {name: 'Matt', title:'instructor'}, {name: 'Colt', title:'instructor'}]
+
+*/
+
+/* function addKeyAndValue(array, key, value) {
+  const arrayCopy = structuredClone(array);
+  arrayCopy.forEach((object) => {
+    object[key] = value;
+  });
+  console.log(array);
+  return arrayCopy;
+}
+
+console.log(
+  addKeyAndValue(
+    [{ name: "Elie" }, { name: "Tim" }, { name: "Matt" }, { name: "Colt" }],
+    "title",
+    "instructor"
+  )
+); */
