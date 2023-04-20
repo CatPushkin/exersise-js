@@ -678,3 +678,114 @@ console.log(storage.getItems()); // ["Nanitoids", "Prolonger", "Antigravitator",
 storage.removeItem("Prolonger");
 console.log(storage.getItems()); // ["Nanitoids", "Antigravitator", "Droid"]
  */
+/* ====================================== */
+/* 
+Виведіть всі назви продуктів.
+Виведіть всі продукти з категорії "Fruit".
+Знайдіть кількість всіх продуктів у категорії "Dairy".
+Виведіть всі продукти, які коштують менше, ніж 2.5.
+Виведіть всі продукти, які є в наявності.
+Виведіть всі продукти в алфавітному порядку.
+Виведіть всі продукти в порядку зменшення ціни.
+Виведіть назви всіх продуктів в верхньому регістрі.
+Виведіть всі продукти в зворотньому порядку.
+Знайдіть продукт з найвищою ціною.
+Знайдіть загальну вартість всіх продуктів.
+Перетворіть масив продуктів у масив об'єктів з полями name та price.
+Знайдіть індекс продукту з назвою "Milk".
+Перевірте, чи всі продукти з категорії "Fruit".
+Перевірте, чи є хоча б один продукт з категорії "Meat".
+Відсортувати продукти в порядку збільшення ціни.
+Знайти індекс продукту "Croissant". */
+// const products = [
+//   { name: "Banana", category: "Fruit", price: 1.5, stock: 15 },
+//   { name: "Apple", category: "Fruit", price: 2, stock: 8 },
+//   { name: "Orange", category: "Fruit", price: 1, stock: 0 },
+//   { name: "Milk", category: "Dairy", price: 3, stock: 20 },
+//   { name: "Cheese", category: "Dairy", price: 5, stock: 5 },
+//   { name: "Bread", category: "Bakery", price: 2.5, stock: 10 },
+//   { name: "Croissant", category: "Bakery", price: 1.5, stock: 3 },
+//   { name: "Eggs", category: "Dairy", price: 2.5, stock: 12 },
+//   { name: "Carrot", category: "Vegetable", price: 1, stock: 7 },
+//   { name: "Potato", category: "Vegetable", price: 0.5, stock: 0 },
+// ];
+
+// const allNames = products.map((product) => product.name);
+// console.log(allNames);
+// const category = products.filter((product) => product.category === "Fruit");
+// console.log(category);
+// const quantity = products.filter(
+//   (product) => product.category === "Dairy"
+// ).length;
+// console.log(quantity);
+// const lessPrice = products.filter((product) => product.price < 2.5);
+// console.log(lessPrice);
+// const inStock = products.filter((product) => product.stock > 0);
+// console.log(inStock);
+// const sortAZ = [...products].sort((a, b) => a.name.localeCompare(b.name));
+// console.log(sortAZ);
+// const sortPrice = [...products].sort((a, b) => b.price - a.price);
+// console.log(sortPrice);
+// // products.forEach((product) => {
+// //   console.log(product.name.toUpperCase());
+// // });
+// const reverse = [...products].reverse();
+// console.log(reverse);
+// const highPrice = [...products].sort((a, b) => b.price - a.price)[0];
+// console.log(highPrice);
+// const totalPrice = products.reduce(
+//   (total, product) => (total += product.price * product.stock),
+//   0
+// );
+// console.log(totalPrice);
+// const newArray = products.map(({ name, price }) => ({
+//   name,
+//   price,
+// }));
+// console.log(newArray);
+// const findIndex = products.findIndex((product) => product.name === "Milk");
+// console.log(findIndex);
+// const everyFruits = products.every((product) => product.category === "Fruit");
+// console.log(everyFruits);
+// const some = products.some((product) => product.category === "Meat");
+// console.log(some);
+
+/* НАСЛІДУВАННЯ. Практика створення класів, наслідування, приватний змінних.
+Створіть клас User, який буде мати приватні властивості name та password, а також методи login та logout.
+
+Далі створіть підклас Admin, який наслідуватиме властивості та методи з класу User, а також матиме свої унікальні методи та властивості, що відповідають конкретному типу користувача.
+
+У підкласі Admin додайте приватну властивість accessLevel, яка буде мати значення administrator за замовчуванням. Також додайте метод deleteUser, який буде приймати name користувача як аргумент та видаляти його з бази даних (в цьому випадку просто виводити повідомлення про видалення).
+
+Після створення класів, створіть екземпляр класу User та екземпляр класу Admin, а потім спробуйте виконати методи логін та логаут для кожного з них, а також викликати метод видалення користувача у підкласі Admin. Переконайтеся, що приватні властивості та методи не доступні з зовнішнього коду. */
+// class User {
+//   #name;
+//   #password;
+//   constructor(name, password, email) {
+//     this.#name = name;
+//     this.#password = password;
+//     this.email = email;
+//   }
+//   login() {
+//     console.log(`${this.email} login`);
+//   }
+//   logout() {
+//     console.log(`${this.#name} logout`);
+//   }
+// }
+// class Admin extends User {
+//   #accessLevel = "administrator";
+//   constructor(name, password, email = "example") {
+//     super(name, password, email);
+//   }
+//   deleteUser(name) {
+//     console.log(`${name} was deleted`);
+//   }
+// }
+// const user1 = new User("Liubov", "1234", "test@gmail.com");
+// const admin1 = new Admin("Sofia", "4321");
+// console.log(user1);
+// console.log(admin1);
+// const newUser = user1.login.bind({ email: "Volodymyr" });
+// admin1.logout();
+// newUser();
