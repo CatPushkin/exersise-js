@@ -1,47 +1,46 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
   <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Переклад слів</title>
+    <style>
+      .list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        padding: 20px;
+        width: fit-content;
+        list-style: none;
+        border: 3px solid black;
+        border-radius: 20px;
+      }
+      .word {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 50px;
+        height: 50px;
+        padding: 50px;
+        color: #000;
+        font-weight: 600;
+        font-size: 22px;
+        background-color: rgb(116, 252, 207);
+        border-radius: 20px;
+        cursor: pointer;
+        text-transform: capitalize;
+        transition: 250ms cubic-bezier(0.165, 0.84, 0.44, 1);
+      }
+      .word.active {
+        background-color: rgb(250, 255, 156);
+      }
+    </style>
   </head>
   <body>
-    <body>
-    <h1 id="title">Базові операції з DOM</h1>
     <ul class="list">
-      <li data-topic="navigation">
-        <h3>Навігація по DOM</h3>
-        <p>
-          Доступ до DOM починається з об'єкта document, з нього можна дістатися
-          до будь-яких елементів.
-        </p>
-      </li>
-      <li data-topic="search">
-        <h3>Пошук елементів</h3>
-        <p>
-          Група методів elem.querySelector* - це сучасний стандарт для пошуку
-          елементів.
-        </p>
-      </li>
-      <li data-topic="props">
-        <h3 class="completed">Властивості та атрибути</h3>
-        <p>
-          elem.textContent, elem.classList, elem.style, elem.hasAttribute(name),
-          elem.getAttribute(name), elem.setAttribute(name, value),
-          elem.removeAttribute(name)
-        </p>
-      </li>
-      <li data-topic="manipulation">
-        <h3>Створення та видалення елементів</h3>
-        <p>
-          DOM API дозволяє не тільки вибирати або змінювати вже існуючі, але й
-          видаляти, а також створювати нові елементи, після чого додавати їх в
-          документ.
-        </p>
-      </li>
+      <li class="word" data-word="hello">hello</li>
+      <li class="word" data-word="flower">flower</li>
+      <li class="word" data-word="apple">apple</li>
     </ul>
-</body>
+
     <!-- <script src="./module-1.js" type="module"></script> -->
     <!-- <script src="./module-2.js" type="module"></script> -->
     <!-- <script src="./module-3.js" type="module"></script> -->

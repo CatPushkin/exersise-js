@@ -125,55 +125,98 @@ newParagraph.innerHTML = newText;
 ***Для цього використовуй масив унікальних id фільмів, знайди на сторінці елементи у яких id дорівнює тому id фільма, який користувач вже перелянув аби саме їх зробити напівпрозорими.
 
 Користувач обожнює дивитися кіно, дивиться його часто, тому при вході на сторінку він хоче бачити, які фільми вже були переглянуті, а до яких він ще не добрався. */
-const films = [
+// const films = [
+//   {
+//     title: "Tetris",
+//     imgUrl: "https://static.hdrezka.ac/i/2023/3/20/f509264b419fdmu53x38j.jpg",
+//     id: "film_1",
+//   },
+//   {
+//     title: "Avatar: The Way of Water",
+//     imgUrl: "https://static.hdrezka.ac/i/2022/12/22/tc5e6b8212683gn66r84s.jpg",
+//     id: "film_2",
+//   },
+//   {
+//     title: "Operation Fortune: Ruse de guerre",
+//     imgUrl: "https://static.hdrezka.ac/i/2022/2/11/s0d53f6cf0ae0tq29m85l.jpg",
+//     id: "film_3",
+//   },
+//   {
+//     title: "Babylon",
+//     imgUrl: "https://static.hdrezka.ac/i/2022/12/25/z330b47a82209ww99w55a.jpg",
+//     id: "film_4",
+//   },
+//   {
+//     title: "The Whale",
+//     imgUrl: "https://static.hdrezka.ac/i/2023/2/24/h23d8c65d734akd89q94c.jpg",
+//     id: "film_5",
+//   },
+// ];
+
+// const watchedFilms = ["film_2", "film_4", "film_5"];
+
+// function createMarkup(films) {
+//   const markup = films.map(({ title, id, imgUrl }) => {
+//     return `<li data-id="${id}">
+//        <img src="${imgUrl}" alt="${title}" />
+//        <p>${title}</p>
+//     </li>`;
+//   });
+//   return markup;
+// }
+// // console.log(createMarkup(films));
+// const ulFilms = document.createElement("ul");
+
+// ulFilms.insertAdjacentHTML("afterbegin", createMarkup(films));
+// document.body.prepend(ulFilms);
+
+// const liSearch = document.querySelectorAll("[data-id]");
+// console.log(liSearch);
+// liSearch.forEach((li) => {
+//   if (watchedFilms.includes(li.dataset.id)) {
+//     li.style.opacity = 0.5;
+//   }
+// });
+
+/* 4. Розроби функціонал для вивчення нових англійський слів. У тебе є масив об'єктів translations, де кожен об'єкт це слово (оригінал та переклад). При наведенні на картку зі словом, користувач повинен побачити переклад слова. Для цього використовуй функцію getTranslation(word), яка прийматиме оригінал слова, яке потрібно перевести, функція повинна повертати переклад даного слова. При наведенні додавай на елемент з класом word ще один клас active, інакше видаляй цей клас.
+Викоритовуй шаблон html з файлу english.html. Наповни список list елементами, словами, які є в масиві translations. */
+const translations = [
   {
-    title: "Tetris",
-    imgUrl: "https://static.hdrezka.ac/i/2023/3/20/f509264b419fdmu53x38j.jpg",
-    id: "film_1",
+    original: "hello",
+    translation: "привіт",
   },
   {
-    title: "Avatar: The Way of Water",
-    imgUrl: "https://static.hdrezka.ac/i/2022/12/22/tc5e6b8212683gn66r84s.jpg",
-    id: "film_2",
+    original: "flower",
+    translation: "квітка",
   },
   {
-    title: "Operation Fortune: Ruse de guerre",
-    imgUrl: "https://static.hdrezka.ac/i/2022/2/11/s0d53f6cf0ae0tq29m85l.jpg",
-    id: "film_3",
-  },
-  {
-    title: "Babylon",
-    imgUrl: "https://static.hdrezka.ac/i/2022/12/25/z330b47a82209ww99w55a.jpg",
-    id: "film_4",
-  },
-  {
-    title: "The Whale",
-    imgUrl: "https://static.hdrezka.ac/i/2023/2/24/h23d8c65d734akd89q94c.jpg",
-    id: "film_5",
+    original: "apple",
+    translation: "яблуко",
   },
 ];
-
-const watchedFilms = ["film_2", "film_4", "film_5"];
-
-function createMarkup(films) {
-  const markup = films.map(({ title, id, imgUrl }) => {
-    return `<li data-id="${id}">
-       <img src="${imgUrl}" alt="${title}" />
-       <p>${title}</p>
-    </li>`;
-  });
-  return markup;
-}
-// console.log(createMarkup(films));
-const ulFilms = document.createElement("ul");
-
-ulFilms.insertAdjacentHTML("afterbegin", createMarkup(films));
-document.body.prepend(ulFilms);
-
-const liSearch = document.querySelectorAll("[data-id]");
-console.log(liSearch);
-liSearch.forEach((li) => {
-  if (watchedFilms.includes(li.dataset.id)) {
-    li.style.opacity = 0.5;
-  }
+const allCard = document.querySelectorAll("li");
+console.log(allCard);
+allCard.forEach((card) => {
+  card.addEventListener("mouseover", getTranslation);
+  card.addEventListener("mouseleave", getOriginal);
 });
+
+function getTranslation(e) {
+  // console.log(e.target.textContent);
+  const selectedWord = e.target;
+  const translationSelectedWord = translations.find(
+    (translation) => translation.original === selectedWord.textContent
+  ).translation;
+
+  selectedWord.textContent = translationSelectedWord;
+  selectedWord.classList.add("active");
+}
+function getOriginal(e) {
+  const selectedWord = e.target;
+  const translationSelectedWord = translations.find(
+    (translation) => translation.translation === selectedWord.textContent
+  ).original;
+
+  selectedWord.textContent = translationSelectedWord;
+  selectedWord.classList.remove("active");
+}
