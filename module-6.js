@@ -180,43 +180,56 @@ newParagraph.innerHTML = newText;
 
 /* 4. Розроби функціонал для вивчення нових англійський слів. У тебе є масив об'єктів translations, де кожен об'єкт це слово (оригінал та переклад). При наведенні на картку зі словом, користувач повинен побачити переклад слова. Для цього використовуй функцію getTranslation(word), яка прийматиме оригінал слова, яке потрібно перевести, функція повинна повертати переклад даного слова. При наведенні додавай на елемент з класом word ще один клас active, інакше видаляй цей клас.
 Викоритовуй шаблон html з файлу english.html. Наповни список list елементами, словами, які є в масиві translations. */
-const translations = [
-  {
-    original: "hello",
-    translation: "привіт",
-  },
-  {
-    original: "flower",
-    translation: "квітка",
-  },
-  {
-    original: "apple",
-    translation: "яблуко",
-  },
-];
-const allCard = document.querySelectorAll("li");
-console.log(allCard);
-allCard.forEach((card) => {
-  card.addEventListener("mouseover", getTranslation);
-  card.addEventListener("mouseleave", getOriginal);
-});
+// const translations = [
+//   {
+//     original: "hello",
+//     translation: "привіт",
+//   },
+//   {
+//     original: "flower",
+//     translation: "квітка",
+//   },
+//   {
+//     original: "apple",
+//     translation: "яблуко",
+//   },
+// ];
+// const allCard = document.querySelectorAll("li");
+// console.log(allCard);
+// allCard.forEach((card) => {
+//   card.addEventListener("mouseover", getTranslation);
+//   card.addEventListener("mouseleave", getOriginal);
+// });
 
-function getTranslation(e) {
-  // console.log(e.target.textContent);
-  const selectedWord = e.target;
-  const translationSelectedWord = translations.find(
-    (translation) => translation.original === selectedWord.textContent
-  ).translation;
+// function getTranslation(e) {
+//   // console.log(e.target.textContent);
+//   const selectedWord = e.target;
+//   const translationSelectedWord = translations.find(
+//     (translation) => translation.original === selectedWord.textContent
+//   ).translation;
 
-  selectedWord.textContent = translationSelectedWord;
-  selectedWord.classList.add("active");
+//   selectedWord.textContent = translationSelectedWord;
+//   selectedWord.classList.add("active");
+// }
+// function getOriginal(e) {
+//   const selectedWord = e.target;
+//   const translationSelectedWord = translations.find(
+//     (translation) => translation.translation === selectedWord.textContent
+//   ).original;
+
+//   selectedWord.textContent = translationSelectedWord;
+//   selectedWord.classList.remove("active");
+// }
+
+/*  Викоритовуй шаблон акордеон меню з файлу accordion.html та напиши наступний функціонал: при кліку на елемент меню, розкривай блок з текстом. При повторному кліку по елементу, розкритий текст приховується. Нажимаючи на інші елементи меню, попередньо відкриті елементи не закриваються. */
+const listRef = document.querySelector(".js-accordion-list");
+
+function handleBtnClick(e) {
+  if (e.target.nodeName === "BUTTON") {
+    const activeEl = e.target.closest("li");
+    const panel = activeEl.querySelector(".panel");
+    panel.classList.toggle("active");
+  }
 }
-function getOriginal(e) {
-  const selectedWord = e.target;
-  const translationSelectedWord = translations.find(
-    (translation) => translation.translation === selectedWord.textContent
-  ).original;
 
-  selectedWord.textContent = translationSelectedWord;
-  selectedWord.classList.remove("active");
-}
+listRef.addEventListener("click", handleBtnClick);

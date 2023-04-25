@@ -1,9 +1,14 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Переклад слів</title>
-    <style>
-      .list {
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <style>
+    /* .list {
         display: flex;
         flex-wrap: wrap;
         gap: 20px;
@@ -31,22 +36,55 @@
       }
       .word.active {
         background-color: rgb(250, 255, 156);
-      }
-    </style>
-  </head>
+      } */
+    HTML CSS BabelResult Skip Results Iframe EDIT ON body {
+      margin: 8px;
+      font-family: sans-serif;
+    }
+
+    .output {
+      text-align: center;
+      text-transform: uppercase;
+      font-size: 24px;
+      font-weight: 700;
+    }
+
+    .color-palette {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(40px, 1fr));
+      gap: 4px;
+    }
+
+    .color-palette .item {
+      padding: 0;
+      margin: 0;
+      border: none;
+      border-radius: 4px;
+      width: 40px;
+      height: 40px;
+      cursor: pointer;
+      transition: transform 250ms ease-in-out;
+    }
+
+    .color-palette .item:hover {
+      transform: scale(1.1);
+    }
+  </style>
+
   <body>
-    <ul class="list">
+    <div class="color-palette"></div>
+    <!-- <ul class="list">
       <li class="word" data-word="hello">hello</li>
       <li class="word" data-word="flower">flower</li>
       <li class="word" data-word="apple">apple</li>
-    </ul>
+    </ul> -->
 
     <!-- <script src="./module-1.js" type="module"></script> -->
     <!-- <script src="./module-2.js" type="module"></script> -->
     <!-- <script src="./module-3.js" type="module"></script> -->
     <!-- <script src="./module-4.js" type="module"></script> -->
     <!-- <script src="./module-5.js" type="module"></script> -->
-    <script src="./module-6.js" type="module"></script>
+    <!-- <script src="./module-6.js" type="module"></script> -->
 
     <!-- <script src="./module-7.js" type="module"></script> -->
 

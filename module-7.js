@@ -56,3 +56,98 @@ console.log(result); */
 }
 
 console.log(createString(friends)); */
+/* ==============PRACTICE================ */
+/* Color Palete. Динамічно відрендери 100 блоків div з класом item задопомогою функції createPaletteItems() і помісти всі ці блоки в colorPalette. Використовуй getRandomColor для назначення рандомного кольору item. При кліку на палетку кольорів зафарбовуй body у вибраний колір.
+Викоритовуй шаблон акордеон меню з файлу palette.html */
+
+// const colorPalette = document.querySelector(".color-palette");
+
+// function selectColor() {}
+
+// function createPaletteItems() {
+//   let markup = "";
+//   for (let i = 0; i < 100; i += 1) {
+//     markup += `<div class='item' style='background-color:${getRandomColor()}'></div>`;
+//   }
+//   return markup;
+// }
+// colorPalette.insertAdjacentHTML("beforebegin", createPaletteItems());
+// function getRandomColor() {
+//   return `#${getRandomHex()}${getRandomHex()}${getRandomHex()}`;
+// }
+
+// function getRandomHex() {
+//   return Math.round(Math.random() * 256)
+//     .toString(16)
+//     .padStart(2, "0");
+// }
+
+/* Викоритовуй шаблон списку завдань з файлу todoList.html для створення функціоналу для списку завдань. Використовуй поширення подій. */
+// const form = document.querySelector("form");
+// const input = document.querySelector("#input");
+// const ul = document.querySelector("#list");
+
+// // Function to create new task element, return LI element
+// const createNewTaskElement = (value) => {
+//   const todoMarkup = `
+//         <li>
+//           <input disabled value="${value}"/>
+//           <div>
+//             <button data-action="edit">Edit</button>
+//             <button data-action="delete">Delete</button>
+//           </div>
+//         </li>
+//         `;
+
+//   return todoMarkup;
+// };
+
+// // Function to handle submit action
+// function handleSubmit(e) {
+//   e.preventDefault();
+//   if (input.value) {
+//     addTask(input.value);
+//     input.value = "";
+//   }
+// }
+
+// // Function to add a task to the list (use createNewTaskElement)
+// function addTask(value) {
+//   const markup = createNewTaskElement(value);
+//   ul.insertAdjacentHTML("afterbegin", markup);
+// }
+
+// // Function to delete a task from the list
+// function deleteTask(e) {
+//   if (e.target.dataset.action === "delete") {
+//     const liEl = e.target.closest("li");
+//     liEl.remove();
+//   }
+// }
+
+// // Function to edit a task (toggle class active, if button EDIT has class active:
+// // change button textContent to "Save", add class "active" for button
+// // add class "active" for input, and remove "disabled" attribute
+// // else do reverse actions
+// function editTask(e) {
+//   if (e.target.dataset.action === "edit") {
+//     const liEl = e.target.closest("li");
+//     const button = liEl.querySelector('li button[data-action="edit"]');
+//     const input = liEl.querySelector("input");
+//     button.classList.toggle("active");
+
+//     if (button.classList.contains("active")) {
+//       button.textContent = "Save";
+//       input.classList.add("active");
+//       input.removeAttribute("disabled");
+//     } else {
+//       button.textContent = "Edit";
+//       input.classList.remove("active");
+//       input.setAttribute("disabled", true);
+//     }
+//   }
+// }
+
+// form.addEventListener("submit", handleSubmit);
+// ul.addEventListener("click", editTask);
+// ul.addEventListener("click", deleteTask);
