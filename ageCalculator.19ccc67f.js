@@ -1,0 +1,2 @@
+const e=document.getElementById("btn"),t=document.getElementById("birthday"),n=document.getElementById("result"),r=new Date;e.addEventListener("click",(function(){if(!t.value)return alert("Please enter your birthday");const e=function(e){const t=new Date(e);return r.getFullYear()-t.getFullYear()}(t.value);n.textContent=`Your age is ${e} years old`}));
+//# sourceMappingURL=ageCalculator.19ccc67f.js.map

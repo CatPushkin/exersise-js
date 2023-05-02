@@ -1,0 +1,2 @@
+!function(){var e=document.getElementById("btn"),t=document.getElementById("birthday"),n=document.getElementById("result"),a=new Date;e.addEventListener("click",(function(){if(!t.value)return alert("Please enter your birthday");var e,r,l=(e=t.value,r=new Date(e),a.getFullYear()-r.getFullYear());n.textContent="Your age is ".concat(l," years old")}))}();
+//# sourceMappingURL=ageCalculator.38cb952b.js.map
