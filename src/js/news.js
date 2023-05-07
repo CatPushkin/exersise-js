@@ -34,10 +34,12 @@ function fetchNews(e) {
 
   if (query === '') return Notify.failure('Enter the data');
 
-  getNews({ query, sortBy, date }).then(res => {
-    const markup = createNewsCardMarkup(res.articles);
-    newsContainer.insertAdjacentHTML('afterbegin', markup);
-  });
+  getNews({ query, sortBy, date })
+    .then(res => {
+      const markup = createNewsCardMarkup(res.articles);
+      newsContainer.insertAdjacentHTML('afterbegin', markup);
+    })
+    .catch(err => console.log(err));
 }
 
 function getNews({ query, sortBy, date }) {
