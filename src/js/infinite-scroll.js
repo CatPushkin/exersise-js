@@ -1,12 +1,9 @@
-import { Notify } from 'notiflix';
-
 class UnsplashAPI {
   #BASE_URL = 'https://api.unsplash.com/search/photos';
   #API_KEY = 'LxvKVGJqiSe6NcEVZOaLXC-f2JIIWZaq_o0WrF8mwJc';
 
   #page;
   #searchQuery;
-  #totalPages;
 
   #searchParams = new URLSearchParams({
     per_page: 30,
@@ -18,20 +15,21 @@ class UnsplashAPI {
   constructor() {
     this.#page = 1;
     this.#searchQuery = '';
-    this.#totalPages = 0;
   }
 
   async getImages() {
-    const res = await fetch(
+    const response = await fetch(
       `${this.#BASE_URL}?query=${this.#searchQuery}&page=${this.#page}&${
         this.#searchParams
       }`
     );
 
-    if (res.ok) {
-      return res.json();
+    if (!response.ok) {
+      throw new Error(response.statusText);
     }
-    throw new Error(res.statusText);
+
+    const data = await response.json();
+    return data;
   }
 
   get page() {
@@ -49,25 +47,29 @@ class UnsplashAPI {
   get searchQuery() {
     return this.#searchQuery;
   }
-
-  get totalPages() {
-    return this.#totalPages;
-  }
-  set totalPages(newTotalPage) {
-    this.#totalPages = newTotalPage;
-  }
 }
 
 const refs = {
   form: document.querySelector('.js-search-form'),
   list: document.querySelector('.js-gallery'),
-  loadMoreBlock: document.querySelector('.target-element'),
+  loadMoreBlock: document.querySelector('.more'),
 };
 
 const { form, list, loadMoreBlock } = refs;
 
 const unsplashApi = new UnsplashAPI();
-// let isMoreItems = false;
+
+let observer = new IntersectionObserver(callback);
+
+function callback(entries, observer) {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      loadMoreItems();
+    }
+  });
+}
+
+let totalPages = 0;
 
 function createGalleryCards(images) {
   return images
@@ -78,58 +80,41 @@ function createGalleryCards(images) {
     )
     .join('');
 }
-const handleSubmit = event => {
-  event.preventDefault();
 
-  const { query } = event.currentTarget.elements;
-  unsplashApi.searchQuery = query.value.trim();
+async function loadMoreItems() {
+  const response = await unsplashApi.getImages();
 
-  if (unsplashApi.searchQuery === '') {
-    Notify.warning('Enter some data!');
+  if (!response.results.length) {
+    loadMoreBlock.classList.remove('is-visible');
     return;
   }
 
-  list.innerHTML = '';
-  unsplashApi.page = 1;
+  totalPages = response.total_pages;
 
-  scrollAndLoadMore();
-};
+  const markup = createGalleryCards(response.results);
+  list.insertAdjacentHTML('beforeend', markup);
 
-const scrollAndLoadMore = async () => {
-  try {
-    const { results, total_pages } = await unsplashApi.getImages();
+  unsplashApi.page += 1;
 
-    if (!results) {
-      Notify.warning('Sorry no images were found');
-      query.value = '';
-      return;
-    }
-
-    list.insertAdjacentHTML('beforeend', createGalleryCards(results));
-
-    if (total_pages <= unsplashApi.page) {
-      Notify.warning('The end!');
-      return;
-    }
-
-    // const lastChild = list.querySelector(".gallery__item:last-child")
-    const lastChild = list.lastElementChild;
-    if (lastChild) {
-      infiniteScroll.observe(lastChild);
-      unsplashApi.page += 1;
-    }
-  } catch (error) {
-    Notify.failure(error.message);
+  if (unsplashApi.page > totalPages) {
+    loadMoreBlock.classList.remove('is-visible');
+    observer.unobserve(loadMoreBlock);
+    return;
   }
-};
+}
 
-const infiniteScroll = new IntersectionObserver(
-  ([entry], obsorver) => {
-    if (entry.intersectionRatio <= 0) return;
-    obsorver.unobserve(entry.target);
-    scrollAndLoadMore();
-  },
-  { threshold: 0.8 }
-);
+async function handleSubmit(e) {
+  e.preventDefault();
+  const query = e.currentTarget.elements.query.value.trim();
+
+  if (!query) return;
+
+  unsplashApi.searchQuery = query;
+  unsplashApi.page = 1;
+  list.innerHTML = '';
+
+  loadMoreBlock.classList.add('is-visible');
+  observer.observe(loadMoreBlock);
+}
 
 form.addEventListener('submit', handleSubmit);
